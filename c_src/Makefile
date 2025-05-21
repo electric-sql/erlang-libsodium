@@ -160,17 +160,9 @@ COMPILE_CPP = $(cpp_verbose) $(CXX) $(CXXFLAGS) $(CPPFLAGS) -c
 
 all:: deps app
 
-app:: $(C_SRC_ENV) $(C_SRC_DRV_FILE)
-
-ifeq ($(filter $(foreach p,$(ALL_DEPS_OUTPUT),$(if $(wildcard $(p)),,x)), x),)
-
-deps::
-
-else
-
 deps:: $(LIBSODIUM_OUTPUT_FILE)
 
-endif
+app:: $(C_SRC_ENV) $(C_SRC_DRV_FILE)
 
 test-build:: $(C_SRC_ENV) $(C_SRC_DRV_FILE)
 
